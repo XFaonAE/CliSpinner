@@ -1,6 +1,6 @@
 {
   "name": "@axerillc/clispinner",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Create beautiful loading animations in the command line interface with ease",
   "main": "./src/CliSpinner.ts",
   "scripts": {
