@@ -1,19 +1,21 @@
+import Chalk from "chalk";
+
 export class CliSpinner {
     /**
      * List of all the frames the spinner animation can run through in order [ 0 -> max ]
      * @var { string[] }
      */
     public static spinnerFrames: string[] = [
-        "⠋", 
-        "⠙", 
-        "⠹", 
-        "⠸", 
-        "⠼", 
-        "⠴", 
-        "⠦", 
-        "⠧", 
-        "⠇", 
-        "⠏"
+        Chalk.hex("#50ffab")("⠋"), 
+        Chalk.hex("#50ffab")("⠙"), 
+        Chalk.hex("#50ffab")("⠹"), 
+        Chalk.hex("#50ffab")("⠸"), 
+        Chalk.hex("#50ffab")("⠼"), 
+        Chalk.hex("#50ffab")("⠴"), 
+        Chalk.hex("#50ffab")("⠦"), 
+        Chalk.hex("#50ffab")("⠧"), 
+        Chalk.hex("#50ffab")("⠇"), 
+        Chalk.hex("#50ffab")("⠏")
     ];
 
     /**
@@ -47,6 +49,11 @@ export class CliSpinner {
     public static spinnerMessage: string = "";
 
     /**
+     * Last rendered output from this class
+     */
+    public static lastSentOutput: string = "";
+
+    /**
      * Start the loading animation with some text followed after the spinner
      * @param { string } message Message to print with loading animation
      */
@@ -68,9 +75,22 @@ export class CliSpinner {
      * Stop spinner animation
      */
     public static stop(icon: string, message: string|null = null) {
+        // Stop rendering
         this.spinnerLoopRendering = false;
-        process.stdout.write("\r                                                                                                              ");
-        process.stdout.write("\r" + icon + " " + this.spinnerMessage);
+        
+        // Clear line
+        process.stdout.write("\r" + this.getClearLine());
+
+        // Set closing message
+        var closingMessage = "";
+        if (message) {
+            closingMessage = message;
+        } else {
+            closingMessage = this.spinnerMessage; 
+        }
+
+        // Write closing message
+        process.stdout.write("\r" + icon + " " + closingMessage);
         console.log("");
     }
 
@@ -82,16 +102,44 @@ export class CliSpinner {
             setTimeout(() => {
                 // Check if the loop should render anything
                 if (this.spinnerLoopRendering) {
-                    process.stdout.write("\r" + this.getNextFrame() + " " + this.spinnerMessage);
+                    this.lastSentOutput = "\r" + this.getNextFrame() + " " + this.spinnerMessage;
+                    process.stdout.write(this.lastSentOutput);
                 }
 
                 // Run the loop's next iteration
-                loop();
+                if (this.spinnerFrameLoopStarted) {
+                    loop();
+                }
             }, this.spinnerFrameDelay);
         }
         
         // Start loop
         loop();
+    }
+
+    /**
+     * Fully stop spinner frame loops
+     */
+    public static fullStop() {
+        this.spinnerFrameLoopStarted = false;
+    }
+
+    /**
+     * 
+     * @returns 
+     */
+    public static getClearLine() {
+        // Get character count in last output
+        const characters = this.lastSentOutput.length;
+
+        // Build the clear line
+        var clearLine = "";
+        while (clearLine.length < characters) {
+            clearLine += " ";
+        }
+
+        // Return the clear line
+        return clearLine;
     }
 
     /**
