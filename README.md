@@ -28,7 +28,7 @@ First lets create a simple message with a spinner without changing any settings.
 
 ```typescript
 // Import the library
-const { CliSpinner } = require("@axerllc/clispinner");
+const { CliSpinner } = require("@axerillc/clispinner");
 
 // Display a simple message
 CliSpinner.write("Hello, world!");
@@ -43,7 +43,7 @@ When executed, your output should look like this but animated:
 You may notice that when the spinner is started, it never stops. To solve this, lets use a function to change the spinner icon and change the message, we will run this after `1000ms`:
 ```typescript
 // Import the library
-const { CliSpinner } = require("@axerllc/clispinner");
+const { CliSpinner } = require("@axerillc/clispinner");
 
 // Display a simple message
 CliSpinner.write("Hello, world!");
