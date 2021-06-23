@@ -33,3 +33,30 @@ const { CliSpinner } = require("@axerllc/clispinner");
 // Display a simple message
 CliSpinner.write("Hello, world!");
 ```
+
+When executed, your output should look like this but animated:
+```
+⠋ Hello, world!
+```
+
+###### End message function
+You may notice that when the spinner is started, it never stops. To solve this, lets use a function to change the spinner icon and change the message, we will run this after `1000ms`:
+```typescript
+// Import the library
+const { CliSpinner } = require("@axerllc/clispinner");
+
+// Display a simple message
+CliSpinner.write("Hello, world!");
+
+// Change icon and message after 1000ms
+setTimeout(() => {
+    CliSpinner.stop("✓", "Stop function called!");
+}, 1000);
+```
+
+When the stop function is called, your output should look something like this:
+```
+✓ Stop function called!
+```
+
+**NOTE:** If you do not specify a message for the stop function, it will use the same message provided from the `write()` function.
