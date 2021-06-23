@@ -1,5 +1,5 @@
 {
-  "name": "@axerillc/clispinner",
+  "name": "@axerillc/cli-spinner",
   "version": "0.0.2",
   "description": "Create beautiful loading animations in the command line interface with ease",
   "main": "./build/src/CliSpinner.js",
