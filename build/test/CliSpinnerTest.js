@@ -1,6 +1,6 @@
 "use strict";
-var CliSpinner = require("../src/CliSpinner").CliSpinner;
-var Chalk = require("chalk");
+var CliSpinner = require("../src/CliSpinner");
+var Chalk = require("Chalk");
 var CliSpinnerTest = /** @class */ (function () {
     function CliSpinnerTest() {
         var _this = this;
