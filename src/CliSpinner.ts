@@ -1,4 +1,4 @@
-import Chalk from "chalk";
+const Chalk = require("chalk");
 
 export class CliSpinner {
     /**
