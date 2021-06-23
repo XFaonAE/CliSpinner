@@ -1,6 +1,6 @@
 const Chalk = require("chalk");
 
-export class CliSpinner {
+module.exports = class CliSpinner {
     /**
      * List of all the frames the spinner animation can run through in order [ 0 -> max ]
      * @var { string[] }
