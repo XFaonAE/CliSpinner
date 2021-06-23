@@ -2,9 +2,10 @@
   "name": "@axerillc/clispinner",
   "version": "0.0.2",
   "description": "Create beautiful loading animations in the command line interface with ease",
-  "main": "./src/CliSpinner.ts",
+  "main": "./build/src/CliSpinner.ts",
   "scripts": {
-    "test": "ts-node ./test/CliSpinnerTest.ts"
+    "test": "ts-node ./test/CliSpinnerTest.ts",
+    "build": "tsc --outDir build/"
   },
   "repository": {
     "type": "git",
