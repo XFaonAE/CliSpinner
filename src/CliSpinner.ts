@@ -125,8 +125,8 @@ export class CliSpinner {
     }
 
     /**
-     * 
-     * @returns 
+     * Returns a clear line which is the same size as the last sent output
+     * @returns { string }
      */
     public static getClearLine() {
         // Get character count in last output
