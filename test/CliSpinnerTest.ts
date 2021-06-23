@@ -1,5 +1,5 @@
-const { CliSpinner } = require("../src/CliSpinner");
-const Chalk = require("chalk");
+const CliSpinner = require("../src/CliSpinner");
+const Chalk = require("Chalk");
 
 class CliSpinnerTest {
     constructor() {
