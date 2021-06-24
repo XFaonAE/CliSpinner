@@ -1,4 +1,4 @@
-const Chalk = require("chalk");
+import Chalk from "chalk";
 
 module.exports = class CliSpinner {
     /**

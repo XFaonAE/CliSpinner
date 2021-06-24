@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var _a;
-var Chalk = require("chalk");
+Object.defineProperty(exports, "__esModule", { value: true });
+var chalk_1 = __importDefault(require("chalk"));
 module.exports = (_a = /** @class */ (function () {
         function CliSpinner() {
         }
@@ -104,16 +108,16 @@ module.exports = (_a = /** @class */ (function () {
      * @var { string[] }
      */
     _a.spinnerFrames = [
-        Chalk.hex("#50ffab")("⠋"),
-        Chalk.hex("#50ffab")("⠙"),
-        Chalk.hex("#50ffab")("⠹"),
-        Chalk.hex("#50ffab")("⠸"),
-        Chalk.hex("#50ffab")("⠼"),
-        Chalk.hex("#50ffab")("⠴"),
-        Chalk.hex("#50ffab")("⠦"),
-        Chalk.hex("#50ffab")("⠧"),
-        Chalk.hex("#50ffab")("⠇"),
-        Chalk.hex("#50ffab")("⠏")
+        chalk_1.default.hex("#50ffab")("⠋"),
+        chalk_1.default.hex("#50ffab")("⠙"),
+        chalk_1.default.hex("#50ffab")("⠹"),
+        chalk_1.default.hex("#50ffab")("⠸"),
+        chalk_1.default.hex("#50ffab")("⠼"),
+        chalk_1.default.hex("#50ffab")("⠴"),
+        chalk_1.default.hex("#50ffab")("⠦"),
+        chalk_1.default.hex("#50ffab")("⠧"),
+        chalk_1.default.hex("#50ffab")("⠇"),
+        chalk_1.default.hex("#50ffab")("⠏")
     ],
     /**
      * Identifies what frame the spinner is currently on
