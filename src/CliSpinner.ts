@@ -1,6 +1,6 @@
 import Chalk from "chalk";
 
-export namespace com.axeri {
+export namespace axeri {
     export class CliSpinner {
         /**
          * List of all the frames the spinner animation can run through in order [ 0 -> max ]

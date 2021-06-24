@@ -1,4 +1,4 @@
-export declare namespace com.axeri {
+export declare namespace axeri {
     class CliSpinner {
         /**
          * List of all the frames the spinner animation can run through in order [ 0 -> max ]
