@@ -1,6 +1,6 @@
 import Chalk from "chalk";
 
-module.exports = class CliSpinner {
+export default class CliSpinner {
     /**
      * List of all the frames the spinner animation can run through in order [ 0 -> max ]
      * @var { string[] }
@@ -34,7 +34,7 @@ module.exports = class CliSpinner {
      * Is the spinner frame loop running
      * @var { boolean }
      */
-    public static spinnerFrameLoopStarted: boolean;
+    public static spinnerFrameLoopStarted: boolean = false;
 
     /**
      * Should the spinner render its frames
