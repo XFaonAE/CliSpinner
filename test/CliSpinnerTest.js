@@ -1,23 +1,22 @@
 "use strict";
-var CliSpinner = require("../src/CliSpinner");
-var Chalk = require("Chalk");
+var cliSpinner = require("../src/cliSpinner");
+var chalk = require("chalk");
 var CliSpinnerTest = /** @class */ (function () {
     function CliSpinnerTest() {
         var _this = this;
         this.messageSpinnerDefault(function () {
             _this.messageSpinnerWithNewMessage(function () {
-                CliSpinner.write("Full stopping in " + Chalk.hex("#50ffab")(5) + " seconds...");
+                cliSpinner.write("Full stopping in " + chalk.hex("#50ffab")(5) + " seconds...");
                 setTimeout(function () {
-                    CliSpinner.write("Full stopping in " + Chalk.hex("#50ffab")(4) + " seconds...");
+                    cliSpinner.write("Full stopping in " + chalk.hex("#50ffab")(4) + " seconds...");
                     setTimeout(function () {
-                        CliSpinner.write("Full stopping in " + Chalk.hex("#50ffab")(3) + " seconds...");
+                        cliSpinner.write("Full stopping in " + chalk.hex("#50ffab")(3) + " seconds...");
                         setTimeout(function () {
-                            CliSpinner.write("Full stopping in " + Chalk.hex("#50ffab")(2) + " seconds...");
+                            cliSpinner.write("Full stopping in " + chalk.hex("#50ffab")(2) + " seconds...");
                             setTimeout(function () {
-                                CliSpinner.write("Full stopping in " + Chalk.hex("#50ffab")(1) + " seconds...");
+                                cliSpinner.write("Full stopping in " + chalk.hex("#50ffab")(1) + " seconds...");
                                 setTimeout(function () {
-                                    CliSpinner.stop(Chalk.hex("#50ffab")("✓"), Chalk.hex("#50ffab")("Stopped"));
-                                    CliSpinner.fullStop();
+                                    cliSpinner.done();
                                 }, 1000);
                             }, 1000);
                         }, 1000);
@@ -30,9 +29,9 @@ var CliSpinnerTest = /** @class */ (function () {
      * Test the spinner with a basic message and default settings
      */
     CliSpinnerTest.prototype.messageSpinnerDefault = function (callback) {
-        CliSpinner.write("Default settings and basic message test");
+        cliSpinner.write("Default settings and basic message test");
         setTimeout(function () {
-            CliSpinner.stop(Chalk.hex("#50ffab")("✓"));
+            cliSpinner.done();
             callback();
         }, 2000);
     };
@@ -40,9 +39,9 @@ var CliSpinnerTest = /** @class */ (function () {
      * Test the spinner with basic message, default settings, and overwrite the message when stopped
      */
     CliSpinnerTest.prototype.messageSpinnerWithNewMessage = function (callback) {
-        CliSpinner.write("Default setting, basic message, and then overwrite message when stopped");
+        cliSpinner.write("Default setting, basic message, and then overwrite message when stopped");
         setTimeout(function () {
-            CliSpinner.stop(Chalk.hex("#50ffab")("✓"), "New message");
+            cliSpinner.done();
             callback();
         }, 2000);
     };
