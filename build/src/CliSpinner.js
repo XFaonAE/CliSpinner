@@ -6,57 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var chalk_1 = __importDefault(require("chalk"));
 var CliSpinner = /** @class */ (function () {
     function CliSpinner() {
-        /**
-         * List of all the frames the spinner animation can run through in order [ 0 -> max ]
-         * @var { string[] }
-         */
-        this.spinnerFrames = [
-            chalk_1.default.hex("#50ffab")("⠋"),
-            chalk_1.default.hex("#50ffab")("⠙"),
-            chalk_1.default.hex("#50ffab")("⠹"),
-            chalk_1.default.hex("#50ffab")("⠸"),
-            chalk_1.default.hex("#50ffab")("⠼"),
-            chalk_1.default.hex("#50ffab")("⠴"),
-            chalk_1.default.hex("#50ffab")("⠦"),
-            chalk_1.default.hex("#50ffab")("⠧"),
-            chalk_1.default.hex("#50ffab")("⠇"),
-            chalk_1.default.hex("#50ffab")("⠏")
-        ];
-        /**
-         * Identifies what frame the spinner is currently on
-         * @var { number }
-         */
-        this.spinnerCurrentFrameId = 1;
-        /**
-         * Delay between each frame of the spinner in milliseconds
-         * @var { number }
-         */
-        this.spinnerFrameDelay = 50;
-        /**
-         * Is the spinner frame loop running
-         * @var { boolean }
-         */
-        this.spinnerFrameLoopStarted = false;
-        /**
-         * Should the spinner render its frames
-         * @var { boolean }
-         */
-        this.spinnerLoopRendering = false;
-        /**
-         * Spinner message to display
-         * @var { string }
-         */
-        this.spinnerMessage = "";
-        /**
-         * Last rendered output from this class
-         */
-        this.lastSentOutput = "";
     }
     /**
      * Start the loading animation with some text followed after the spinner
      * @param { string } message Message to print with loading animation
      */
-    CliSpinner.prototype.write = function (message) {
+    CliSpinner.write = function (message) {
         // Start the frame loop if it hasn't been started yet
         if (!this.spinnerFrameLoopStarted) {
             this.spinnerFrameLoopStarted = true;
@@ -70,7 +25,7 @@ var CliSpinner = /** @class */ (function () {
     /**
      * Stop spinner animation
      */
-    CliSpinner.prototype.stop = function (icon, message) {
+    CliSpinner.stop = function (icon, message) {
         if (message === void 0) { message = null; }
         // Stop rendering
         this.spinnerLoopRendering = false;
@@ -91,7 +46,7 @@ var CliSpinner = /** @class */ (function () {
     /**
      * Run the spinner frame loop
      */
-    CliSpinner.prototype.runSpinnerLoop = function () {
+    CliSpinner.runSpinnerLoop = function () {
         var _this = this;
         var loop = function () {
             setTimeout(function () {
@@ -112,14 +67,14 @@ var CliSpinner = /** @class */ (function () {
     /**
      * Fully stop spinner frame loops
      */
-    CliSpinner.prototype.fullStop = function () {
+    CliSpinner.fullStop = function () {
         this.spinnerFrameLoopStarted = false;
     };
     /**
      * Returns a clear line which is the same size as the last sent output
      * @returns { string }
      */
-    CliSpinner.prototype.getClearLine = function () {
+    CliSpinner.getClearLine = function () {
         // Get character count in last output
         var characters = this.lastSentOutput.length;
         // Build the clear line
@@ -134,7 +89,7 @@ var CliSpinner = /** @class */ (function () {
      * Get the next frame raw
      * @returns { string } Raw frame
      */
-    CliSpinner.prototype.getNextFrame = function () {
+    CliSpinner.getNextFrame = function () {
         // Increment frames ID by 1 if not at max
         if (this.spinnerCurrentFrameId == this.spinnerFrames.length) {
             this.spinnerCurrentFrameId = 1;
@@ -145,8 +100,52 @@ var CliSpinner = /** @class */ (function () {
         // Return the next frame as a string
         return this.spinnerFrames[this.spinnerCurrentFrameId - 1];
     };
+    /**
+     * List of all the frames the spinner animation can run through in order [ 0 -> max ]
+     * @var { string[] }
+     */
+    CliSpinner.spinnerFrames = [
+        chalk_1.default.hex("#50ffab")("⠋"),
+        chalk_1.default.hex("#50ffab")("⠙"),
+        chalk_1.default.hex("#50ffab")("⠹"),
+        chalk_1.default.hex("#50ffab")("⠸"),
+        chalk_1.default.hex("#50ffab")("⠼"),
+        chalk_1.default.hex("#50ffab")("⠴"),
+        chalk_1.default.hex("#50ffab")("⠦"),
+        chalk_1.default.hex("#50ffab")("⠧"),
+        chalk_1.default.hex("#50ffab")("⠇"),
+        chalk_1.default.hex("#50ffab")("⠏")
+    ];
+    /**
+     * Identifies what frame the spinner is currently on
+     * @var { number }
+     */
+    CliSpinner.spinnerCurrentFrameId = 1;
+    /**
+     * Delay between each frame of the spinner in milliseconds
+     * @var { number }
+     */
+    CliSpinner.spinnerFrameDelay = 50;
+    /**
+     * Is the spinner frame loop running
+     * @var { boolean }
+     */
+    CliSpinner.spinnerFrameLoopStarted = false;
+    /**
+     * Should the spinner render its frames
+     * @var { boolean }
+     */
+    CliSpinner.spinnerLoopRendering = false;
+    /**
+     * Spinner message to display
+     * @var { string }
+     */
+    CliSpinner.spinnerMessage = "";
+    /**
+     * Last rendered output from this class
+     */
+    CliSpinner.lastSentOutput = "";
     return CliSpinner;
 }());
-var cliSpinner = new CliSpinner();
-exports.default = cliSpinner;
+exports.default = CliSpinner;
 //# sourceMappingURL=CliSpinner.js.map
