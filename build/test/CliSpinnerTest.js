@@ -49,3 +49,4 @@ var CliSpinnerTest = /** @class */ (function () {
     return CliSpinnerTest;
 }());
 var cliSpinnerTest = new CliSpinnerTest();
+//# sourceMappingURL=CliSpinnerTest.js.map

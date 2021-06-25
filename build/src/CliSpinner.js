@@ -149,3 +149,4 @@ var CliSpinner = /** @class */ (function () {
 }());
 var cliSpinner = new CliSpinner();
 exports.default = cliSpinner;
+//# sourceMappingURL=CliSpinner.js.map
