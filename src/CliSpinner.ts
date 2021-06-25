@@ -1,22 +1,28 @@
-import Chalk from "chalk";
+import chalk from "chalk";
 
-export default class CliSpinner {
+module.exports = class CliSpinner {
     /**
      * List of all the frames the spinner animation can run through in order [ 0 -> max ]
      * @var { string[] }
      */
     public static spinnerFrames: string[] = [
-        Chalk.hex("#50ffab")("⠋"), 
-        Chalk.hex("#50ffab")("⠙"), 
-        Chalk.hex("#50ffab")("⠹"), 
-        Chalk.hex("#50ffab")("⠸"), 
-        Chalk.hex("#50ffab")("⠼"), 
-        Chalk.hex("#50ffab")("⠴"), 
-        Chalk.hex("#50ffab")("⠦"), 
-        Chalk.hex("#50ffab")("⠧"), 
-        Chalk.hex("#50ffab")("⠇"), 
-        Chalk.hex("#50ffab")("⠏")
+        chalk.hex("#50ffab")("⠋"), 
+        chalk.hex("#50ffab")("⠙"), 
+        chalk.hex("#50ffab")("⠹"), 
+        chalk.hex("#50ffab")("⠸"), 
+        chalk.hex("#50ffab")("⠼"), 
+        chalk.hex("#50ffab")("⠴"), 
+        chalk.hex("#50ffab")("⠦"), 
+        chalk.hex("#50ffab")("⠧"), 
+        chalk.hex("#50ffab")("⠇"), 
+        chalk.hex("#50ffab")("⠏")
     ];
+
+    /**
+     * Spinner done icon
+     * @var { string }
+     */
+    public static spinnerDoneIcon: string = chalk.hex("#50ffab")("✓");
 
     /**
      * Identifies what frame the spinner is currently on
@@ -74,7 +80,7 @@ export default class CliSpinner {
     /**
      * Stop spinner animation
      */
-    public static stop(icon: string, message: string|null = null) {
+    public static stop(icon: string, message: string | null = null) {
         // Stop rendering
         this.spinnerLoopRendering = false;
         
@@ -92,6 +98,15 @@ export default class CliSpinner {
         // Write closing message
         process.stdout.write("\r" + icon + " " + closingMessage);
         console.log("");
+    }
+
+    /**
+     * Set spinner to done state
+     * @param { string } newMessage Change the spinner message
+     */
+    public static done(newMessage: string | null = null) {
+        // Stop
+        this.stop(this.spinnerDoneIcon, newMessage);
     }
 
     /**

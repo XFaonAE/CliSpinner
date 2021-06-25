@@ -1,5 +1,5 @@
-declare const CliSpinner: any;
-declare const Chalk: any;
+declare const cliSpinner: any;
+declare const chalk: any;
 declare class CliSpinnerTest {
     constructor();
     /**
