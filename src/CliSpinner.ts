@@ -117,7 +117,7 @@ module.exports = class CliSpinner {
             setTimeout(() => {
                 // Check if the loop should render anything
                 if (this.spinnerLoopRendering) {
-                    this.lastSentOutput = "\r" + this.getNextFrame() + " " + this.spinnerMessage + "\n";
+                    this.lastSentOutput = "\r" + this.getNextFrame() + " " + this.spinnerMessage;
                     process.stdout.write(this.lastSentOutput);
                 }
 

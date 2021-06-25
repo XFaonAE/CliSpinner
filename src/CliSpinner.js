@@ -62,7 +62,7 @@ module.exports = (_a = /** @class */ (function () {
                 setTimeout(function () {
                     // Check if the loop should render anything
                     if (_this.spinnerLoopRendering) {
-                        _this.lastSentOutput = "\r" + _this.getNextFrame() + " " + _this.spinnerMessage + "\n";
+                        _this.lastSentOutput = "\r" + _this.getNextFrame() + " " + _this.spinnerMessage;
                         process.stdout.write(_this.lastSentOutput);
                     }
                     // Run the loop's next iteration
