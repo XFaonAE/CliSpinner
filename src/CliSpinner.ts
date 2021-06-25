@@ -1,11 +1,11 @@
 import Chalk from "chalk";
 
-class CliSpinner {
+export default class CliSpinner {
     /**
      * List of all the frames the spinner animation can run through in order [ 0 -> max ]
      * @var { string[] }
      */
-    public spinnerFrames: string[] = [
+    public static spinnerFrames: string[] = [
         Chalk.hex("#50ffab")("⠋"), 
         Chalk.hex("#50ffab")("⠙"), 
         Chalk.hex("#50ffab")("⠹"), 
@@ -22,42 +22,42 @@ class CliSpinner {
      * Identifies what frame the spinner is currently on
      * @var { number }
      */
-    public spinnerCurrentFrameId: number = 1;
+    public static spinnerCurrentFrameId: number = 1;
 
     /**
      * Delay between each frame of the spinner in milliseconds
      * @var { number }
      */
-    public spinnerFrameDelay: number = 50;
+    public static spinnerFrameDelay: number = 50;
 
     /**
      * Is the spinner frame loop running
      * @var { boolean }
      */
-    public spinnerFrameLoopStarted: boolean = false;
+    public static spinnerFrameLoopStarted: boolean = false;
 
     /**
      * Should the spinner render its frames
      * @var { boolean }
      */
-    public spinnerLoopRendering: boolean = false;
+    public static spinnerLoopRendering: boolean = false;
 
     /**
      * Spinner message to display
      * @var { string }
      */
-    public spinnerMessage: string = "";
+    public static spinnerMessage: string = "";
 
     /**
      * Last rendered output from this class
      */
-    public lastSentOutput: string = "";
+    public static lastSentOutput: string = "";
 
     /**
      * Start the loading animation with some text followed after the spinner
      * @param { string } message Message to print with loading animation
      */
-    public write(message: string) {
+    public static write(message: string) {
         // Start the frame loop if it hasn't been started yet
         if (!this.spinnerFrameLoopStarted) {
             this.spinnerFrameLoopStarted = true;
@@ -74,7 +74,7 @@ class CliSpinner {
     /**
      * Stop spinner animation
      */
-    public stop(icon: string, message: string|null = null) {
+    public static stop(icon: string, message: string|null = null) {
         // Stop rendering
         this.spinnerLoopRendering = false;
         
@@ -97,7 +97,7 @@ class CliSpinner {
     /**
      * Run the spinner frame loop
      */
-    public runSpinnerLoop() {
+    public static runSpinnerLoop() {
         const loop = () => {
             setTimeout(() => {
                 // Check if the loop should render anything
@@ -120,7 +120,7 @@ class CliSpinner {
     /**
      * Fully stop spinner frame loops
      */
-    public fullStop() {
+    public static fullStop() {
         this.spinnerFrameLoopStarted = false;
     }
 
@@ -128,7 +128,7 @@ class CliSpinner {
      * Returns a clear line which is the same size as the last sent output
      * @returns { string }
      */
-    public getClearLine() {
+    public static getClearLine() {
         // Get character count in last output
         const characters = this.lastSentOutput.length;
 
@@ -146,7 +146,7 @@ class CliSpinner {
      * Get the next frame raw
      * @returns { string } Raw frame
      */
-    public getNextFrame() {
+    public static getNextFrame() {
         // Increment frames ID by 1 if not at max
         if (this.spinnerCurrentFrameId == this.spinnerFrames.length) {
             this.spinnerCurrentFrameId = 1;
@@ -158,6 +158,3 @@ class CliSpinner {
         return this.spinnerFrames[this.spinnerCurrentFrameId - 1];
     }
 }
-
-const cliSpinner = new CliSpinner();
-export default cliSpinner;
